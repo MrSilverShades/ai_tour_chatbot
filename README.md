@@ -55,3 +55,66 @@ This makes the bot highly effective for its specific use case and is a great exa
 ```bash
 git clone [https://github.com/your-username/ai-tour-planner.git](https://github.com/your-username/ai-tour-planner.git)
 cd ai-tour-planner
+3. Set Up a Virtual Environment (Recommended)
+Bash
+
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+4. Install Dependencies
+Create a requirements.txt file with the following content:
+
+Plaintext
+
+streamlit
+google-generativeai
+Then, install the dependencies:
+
+Bash
+
+pip install -r requirements.txt
+5. Configure Your API Key
+This app is designed to work seamlessly with Streamlit's secrets management.
+
+For Local Development:
+
+Create a folder in your project's root directory named .streamlit.
+
+Inside that folder, create a file named secrets.toml.
+
+Add your API key to this file:
+
+Ini, TOML
+
+# .streamlit/secrets.toml
+GEMINI_API_KEY = "YOUR_API_KEY_HERE"
+For Deployment on Streamlit Community Cloud:
+
+Deploy your app from your GitHub repository.
+
+In the app's settings, go to the Secrets section.
+
+Add your API key with the same name:
+
+Plaintext
+
+GEMINI_API_KEY = "YOUR_API_KEY_HERE"
+6. Run the Application
+Bash
+
+streamlit run TOUR.py
+Open your web browser and go to http://localhost:8501 to start planning your trip!
+
+💻 Technology Stack
+Backend: Python
+
+Frontend (UI): Streamlit
+
+AI Model: Google Gemini (via google-generativeai)
+
+📄 License
+This project is open-sourced under the MIT License. See the LICENSE file for more details.
