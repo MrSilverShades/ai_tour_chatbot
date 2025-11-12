@@ -12,294 +12,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Custom CSS - Works in BOTH Light and Dark Modes ---
-st.markdown("""
-    <style>
-    /* Import Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-    
-    /* Base font */
-    * {
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    /* Main app background - subtle gradient */
-    .stApp {
-        background: linear-gradient(135deg, #f0f4ff 0%, #e0f2fe 100%);
-    }
-    
-    /* Main Content Area - Clean white background */
-    .main .block-container {
-        padding: 2rem 3rem !important;
-        max-width: 1400px !important;
-        background-color: #ffffff !important;
-        border-radius: 20px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
-        margin: 2rem auto !important;
-    }
-    
-    /* Headers - Always visible with dark text */
-    .main h1 {
-        color: #1e293b !important;
-        font-weight: 700 !important;
-        font-size: 2.5rem !important;
-        text-align: center !important;
-        margin-bottom: 0.5rem !important;
-    }
-    
-    .main h2 {
-        color: #334155 !important;
-        font-weight: 600 !important;
-        font-size: 1.8rem !important;
-    }
-    
-    .main h3 {
-        color: #3b82f6 !important;
-        font-weight: 600 !important;
-        font-size: 1.4rem !important;
-    }
-    
-    /* Subtitle */
-    .subtitle {
-        text-align: center !important;
-        color: #64748b !important;
-        font-size: 1.1rem !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    /* All text in main area - dark and visible */
-    .main p,
-    .main span,
-    .main div,
-    .main li {
-        color: #334155 !important;
-        font-size: 1rem !important;
-        line-height: 1.7 !important;
-    }
-    
-    /* Chat Messages */
-    .stChatMessage {
-        background: #ffffff !important;
-        border: 2px solid #e2e8f0 !important;
-        border-radius: 16px !important;
-        padding: 1.5rem !important;
-        margin: 1.5rem 0 !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
-    }
-    
-    /* User messages - Blue background */
-    .stChatMessage[data-testid*="user"] {
-        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
-        border-left: 5px solid #3b82f6 !important;
-    }
-    
-    /* Assistant messages - Green background */
-    .stChatMessage[data-testid*="assistant"] {
-        background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
-        border-left: 5px solid #10b981 !important;
-    }
-    
-    /* Chat message text - always dark */
-    .stChatMessage p,
-    .stChatMessage span,
-    .stChatMessage div {
-        color: #1e293b !important;
-    }
-    
-    /* Chat Input */
-    .stChatInput {
-        border: 3px solid #3b82f6 !important;
-        border-radius: 16px !important;
-        background: #ffffff !important;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1) !important;
-    }
-    
-    .stChatInput input {
-        color: #1e293b !important;
-        font-size: 1rem !important;
-        padding: 12px !important;
-    }
-    
-    /* Statistics Cards */
-    .stat-card {
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
-        color: white !important;
-        padding: 2rem !important;
-        border-radius: 16px !important;
-        text-align: center !important;
-        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3) !important;
-        transition: all 0.3s ease !important;
-        margin: 10px !important;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-8px) !important;
-        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5) !important;
-    }
-    
-    .stat-card h2 {
-        color: white !important;
-        font-size: 3rem !important;
-        margin: 0 !important;
-    }
-    
-    .stat-card h3 {
-        color: white !important;
-        font-size: 2.5rem !important;
-        margin: 10px 0 !important;
-        font-weight: 700 !important;
-    }
-    
-    .stat-card p {
-        color: rgba(255, 255, 255, 0.95) !important;
-        font-size: 1rem !important;
-        margin: 0 !important;
-        font-weight: 500 !important;
-    }
-    
-    /* Feature Cards */
-    .feature-card {
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
-        border: 2px solid #e2e8f0 !important;
-        border-radius: 16px !important;
-        padding: 2rem !important;
-        text-align: center !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05) !important;
-        height: 100% !important;
-    }
-    
-    .feature-card:hover {
-        transform: translateY(-8px) !important;
-        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15) !important;
-        border-color: #3b82f6 !important;
-    }
-    
-    .feature-card h3 {
-        color: #3b82f6 !important;
-        margin-bottom: 1rem !important;
-        font-size: 1.3rem !important;
-    }
-    
-    .feature-card p {
-        color: #475569 !important;
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-    }
-    
-    /* Buttons in main area */
-    .main .stButton > button {
-        border-radius: 10px !important;
-        font-weight: 600 !important;
-        transition: all 0.3s ease !important;
-        border: 2px solid #3b82f6 !important;
-        background: #ffffff !important;
-        color: #1e293b !important;
-        padding: 10px 20px !important;
-    }
-    
-    .main .stButton > button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3) !important;
-        background: #3b82f6 !important;
-        color: white !important;
-    }
-    
-    /* Sidebar - Keep Streamlit's default styling for light/dark mode compatibility */
-    section[data-testid="stSidebar"] {
-        padding: 1.5rem 1rem;
-    }
-    
-    /* Sidebar buttons - Enhanced styling */
-    section[data-testid="stSidebar"] .stButton > button {
-        border-radius: 10px !important;
-        font-weight: 600 !important;
-        font-size: 14px !important;
-        width: 100% !important;
-        transition: all 0.3s ease !important;
-        padding: 12px 20px !important;
-    }
-    
-    section[data-testid="stSidebar"] button[kind="primary"] {
-        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
-        color: white !important;
-        border: none !important;
-        font-size: 16px !important;
-        padding: 14px 24px !important;
-    }
-    
-    section[data-testid="stSidebar"] button[kind="primary"]:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 16px rgba(220, 38, 38, 0.5) !important;
-    }
-    
-    /* Download Button */
-    section[data-testid="stSidebar"] .stDownloadButton > button {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-        color: white !important;
-        border: none !important;
-    }
-    
-    /* Expander styling */
-    .streamlit-expanderHeader {
-        border-radius: 10px !important;
-        font-weight: 600 !important;
-        padding: 12px 16px !important;
-    }
-    
-    /* Info/Warning/Success boxes */
-    .stAlert {
-        border-radius: 12px !important;
-        border-left: 5px solid !important;
-        padding: 1rem 1.5rem !important;
-    }
-    
-    /* Divider */
-    hr {
-        margin: 2.5rem 0 !important;
-        border: none !important;
-        height: 2px !important;
-        background: linear-gradient(90deg, transparent, #cbd5e1, transparent) !important;
-    }
-    
-    /* Spinner */
-    .stSpinner > div {
-        border-top-color: #3b82f6 !important;
-    }
-    
-    /* Footer */
-    .footer {
-        text-align: center;
-        padding: 2rem;
-        color: #64748b !important;
-    }
-    
-    /* Ensure sidebar text is visible in both modes */
-    section[data-testid="stSidebar"] label {
-        font-weight: 600 !important;
-        font-size: 14px !important;
-        margin-bottom: 8px !important;
-    }
-    
-    /* Input fields inherit theme colors */
-    section[data-testid="stSidebar"] input,
-    section[data-testid="stSidebar"] textarea {
-        border-radius: 10px !important;
-        padding: 10px !important;
-        font-size: 14px !important;
-    }
-    
-    /* Multiselect tags */
-    section[data-testid="stSidebar"] [data-baseweb="tag"] {
-        background-color: #3b82f6 !important;
-        color: #ffffff !important;
-        font-size: 13px !important;
-        padding: 4px 10px !important;
-        margin: 3px !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # --- API Key and Model Setup ---
 try:
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
@@ -574,40 +286,18 @@ if st.session_state.current_trip or st.session_state.trip_stats["total_trips"] >
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        st.markdown(f"""
-            <div class="stat-card">
-                <h2>🗺️</h2>
-                <h3>{st.session_state.trip_stats['total_trips']}</h3>
-                <p>Total Trips</p>
-            </div>
-        """, unsafe_allow_html=True)
+        # Using st.metric for default styling
+        st.metric(label="🗺️ Total Trips", value=st.session_state.trip_stats['total_trips'])
     
     with col2:
-        st.markdown(f"""
-            <div class="stat-card">
-                <h2>📅</h2>
-                <h3>{st.session_state.trip_stats['total_days']}</h3>
-                <p>Days Traveled</p>
-            </div>
-        """, unsafe_allow_html=True)
+        st.metric(label="📅 Days Traveled", value=st.session_state.trip_stats['total_days'])
     
     with col3:
-        st.markdown(f"""
-            <div class="stat-card">
-                <h2>🌍</h2>
-                <h3>{len(st.session_state.trip_stats['destinations'])}</h3>
-                <p>Destinations</p>
-            </div>
-        """, unsafe_allow_html=True)
+        st.metric(label="🌍 Destinations", value=len(st.session_state.trip_stats['destinations']))
     
     with col4:
-        st.markdown(f"""
-            <div class="stat-card">
-                <h2>💬</h2>
-                <h3>{len(st.session_state.chat_history)}</h3>
-                <p>Messages</p>
-            </div>
-        """, unsafe_allow_html=True)
+        st.metric(label="💬 Messages", value=len(st.session_state.chat_history))
+
 
 st.markdown("---")
 
@@ -619,28 +309,19 @@ if not st.session_state.chat_history:
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.markdown("""
-        <div class="feature-card">
-            <h3>🎯 Personalized Plans</h3>
-            <p>Get custom itineraries tailored to your interests, budget, and travel style with AI-powered recommendations.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("<h3>🎯 Personalized Plans</h3>", unsafe_allow_html=True)
+            st.markdown("<p>Get custom itineraries tailored to your interests, budget, and travel style with AI-powered recommendations.</p>", unsafe_allow_html=True)
     
     with col2:
-        st.markdown("""
-        <div class="feature-card">
-            <h3>💬 Interactive Chat</h3>
-            <p>Ask questions, request changes, and refine your itinerary through natural conversation with our AI assistant.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("<h3>💬 Interactive Chat</h3>", unsafe_allow_html=True)
+            st.markdown("<p>Ask questions, request changes, and refine your itinerary through natural conversation with our AI assistant.</p>", unsafe_allow_html=True)
     
     with col3:
-        st.markdown("""
-        <div class="feature-card">
-            <h3>💾 Save & Export</h3>
-            <p>Save your favorite itineraries and export them as JSON files for offline access and easy sharing.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("<h3>💾 Save & Export</h3>", unsafe_allow_html=True)
+            st.markdown("<p>Save your favorite itineraries and export them as JSON files for offline access and easy sharing.</p>", unsafe_allow_html=True)
 
 # Chat History Display
 for idx, message in enumerate(st.session_state.chat_history):
@@ -768,7 +449,7 @@ if user_query:
 # Footer
 st.markdown("---")
 st.markdown("""
-<div class="footer">
+<div style="text-align: center; padding: 2rem; color: #64748b;">
     <p style='font-size: 1.1rem; margin-bottom: 0.5rem;'>Made with ❤️ using Streamlit and Google Gemini 2.0 Flash</p>
     <p style='font-size: 0.9rem; color: #94a3b8;'>© 2025 AI Tour Planner Pro - Your intelligent travel companion</p>
 </div>
